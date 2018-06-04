@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.marralhinha.server;
 
-import org.academiadecodigo.bootcamp.marralhinha.client.ClientHelper;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

@@ -1,6 +1,4 @@
-package org.academiadecodigo.bootcamp.marralhinha.client;
-
-import org.academiadecodigo.bootcamp.marralhinha.server.Server;
+package org.academiadecodigo.bootcamp.marralhinha.server;
 
 import java.io.BufferedReader;
 import java.io.IOException;
