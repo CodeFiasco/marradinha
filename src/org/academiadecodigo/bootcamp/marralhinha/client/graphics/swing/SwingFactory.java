@@ -14,6 +14,6 @@ public class SwingFactory implements GraphicsFactory {
 
     @Override
     public Button getButton(ClickHandler handler, int col, int row) {
-        return new SButton(canvas, handler, col, row);
+        return new SButton(canvas, handler, "", col, row, 1);
     }
 }

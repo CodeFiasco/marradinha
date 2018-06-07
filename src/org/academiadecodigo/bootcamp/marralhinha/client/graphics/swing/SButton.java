@@ -11,22 +11,18 @@ public class SButton implements Button {
     private static final int PADDING = 6;
 
     private SCanvas canvas;
-    private int col;
-    private int row;
     private ClickHandler handler;
     private JButton button;
 
-    public SButton(SCanvas canvas, ClickHandler handler, int col, int row) {
+    public SButton(SCanvas canvas, ClickHandler handler, String text, int col, int row, int width) {
         this.canvas = canvas;
         this.handler = handler;
-        this.col = col;
-        this.row = row;
 
-        button = new JButton();
+        button = new JButton(text);
         button.setBounds(
                 canvas.colToX(col) - PADDING / 2,
                 canvas.rowToY(row) - PADDING / 2,
-                canvas.getCellSize() - PADDING,
+                canvas.getCellSize() * width - PADDING,
                 canvas.getCellSize() - PADDING
         );
 
@@ -36,10 +32,11 @@ public class SButton implements Button {
         button.addActionListener(e -> click());
 
         canvas.add(button);
+        canvas.refresh();
     }
 
     private void click() {
-        handler.clicked(col, row);
+        handler.clicked();
     }
 
     public void fill(Color color) {
