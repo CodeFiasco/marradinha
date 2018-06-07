@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.marralhinha.server;
 
+import org.academiadecodigo.bootcamp.marralhinha.utils.Connection;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -35,12 +37,12 @@ public class Server {
 
             try {
                 Socket clientSocket = serverSocket.accept();
-                ClientHelper clientHelper = new ClientHelper(connectedClients, clientSocket, game);
+                Connection connection = new Connection(clientSocket, game);
 
                 System.out.println("Waiting for more clients at port " + serverSocket.getLocalPort());
-                game.addClient(clientHelper);
+                game.addClient(connection);
 
-                new Thread(clientHelper).start();
+                new Thread(connection).start();
                 connectedClients++;
 
             } catch (IOException e) {
