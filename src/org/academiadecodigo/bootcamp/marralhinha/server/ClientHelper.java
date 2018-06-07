@@ -8,22 +8,19 @@ import java.net.Socket;
 
 public class ClientHelper implements Runnable {
 
-    private Server server;
+    private GameServer server;
     private PrintWriter out;
     private BufferedReader in;
     private Socket clientSocket;
+    private int id;
 
 
-    public ClientHelper(Socket clientSocket) {
-
-        try {
-
-            out = new PrintWriter(clientSocket.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public ClientHelper(int id, Socket clientSocket, GameServer server) throws IOException {
+        this.id = id;
+        this.server = server;
+        this.clientSocket = clientSocket;
+        out = new PrintWriter(clientSocket.getOutputStream(), true);
+        in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
     }
 
     @Override
@@ -31,18 +28,16 @@ public class ClientHelper implements Runnable {
 
         while (clientSocket.isBound()) {
 
-            System.out.println("msg: ");
-
-            String message = null;
-
             try {
-                message = in.readLine();
+                String message = in.readLine();
+                server.addEvent(id + " " + message);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            out.println(message);
         }
+    }
 
+    public void sendMessage(String message) {
+        out.println(message);
     }
 }
