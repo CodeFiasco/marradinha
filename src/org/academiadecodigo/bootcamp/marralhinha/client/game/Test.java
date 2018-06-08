@@ -8,22 +8,12 @@ import org.academiadecodigo.bootcamp.marralhinha.client.graphics.swing.SwingFact
 public class Test {
 
     public static void main(String[] args) {
-        GraphicsFactory factory = new SwingFactory(20, 20);
-        Player p = new Player(new GameState(null), Color.RED);
+        GraphicsFactory graphicsFactory = new SwingFactory(21, 21);
 
-        Spot iterator = new Spot(factory, 0, 1);
-        iterator.changeResident(p);
+        Spot start = BoardFactory.generate(graphicsFactory).get(0);
 
-        Spot begin = iterator;
-
-        for (int i = 1; i < 20; i++) {
-            Spot aux = new Spot(factory, i, 1);
-            iterator.setNext(aux);
-            iterator = aux;
-        }
-
-        iterator.setNext(begin);
-
+        GameState state = new GameState(null);
+        start.changeResident(new Player(state, Color.RED));
     }
 
 }
