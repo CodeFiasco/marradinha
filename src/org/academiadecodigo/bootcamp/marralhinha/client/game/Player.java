@@ -33,6 +33,7 @@ public class Player {
         }
 
         game.sendMoveMessage(cursor.getCol(), cursor.getRow(), moves);
+        game.setMyTurn(false);
     }
 
     public void move(int col, int row, int times) {
