@@ -13,8 +13,8 @@ public class Queue extends Spot{
 
     @Override
     public Spot getNextSpot(Player mover, int times) {
-        if (isLeaveValue(times)) {
-            return this;
+        if (!isLeaveValue(times)) {
+            return null;
         }
 
         return super.getNextSpot(mover, 1);

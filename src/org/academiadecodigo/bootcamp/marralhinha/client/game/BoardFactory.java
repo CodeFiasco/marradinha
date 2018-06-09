@@ -80,7 +80,6 @@ public class BoardFactory {
 
     private static void generateQueue(GraphicsFactory graphics, Player player, Spot exit, int col, int row, int colDelta, int rowDelta) {
         List<Spot> playerQueue = new ArrayList<>(5);
-        player.setQueue(playerQueue);
 
         for (int i = 0; i < 5; i++) {
             Queue queue = new Queue(graphics, col + i * colDelta, row + i * rowDelta);
@@ -88,6 +87,8 @@ public class BoardFactory {
             queue.setNext(exit);
             playerQueue.add(queue);
         }
+
+        player.setQueue(playerQueue);
     }
 
     private static Spot generatePath(GraphicsFactory graphics, Player key, int col, int row, int colDelta, int rowDelta) {

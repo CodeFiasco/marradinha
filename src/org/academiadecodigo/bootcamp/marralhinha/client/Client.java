@@ -63,6 +63,7 @@ public class Client implements EventHandler {
         switch (arguments[0]) {
 
             case Messages.PLAY:
+                System.out.println("Your turn");
                 game.setCanRoll(true);
                 break;
 

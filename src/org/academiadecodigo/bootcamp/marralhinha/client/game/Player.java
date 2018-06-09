@@ -2,10 +2,8 @@ package org.academiadecodigo.bootcamp.marralhinha.client.game;
 
 import org.academiadecodigo.bootcamp.marralhinha.client.game.spot.Spot;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Color;
-import org.academiadecodigo.bootcamp.marralhinha.utils.Messages;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Player {
@@ -30,13 +28,9 @@ public class Player {
 
         if (aux == null) {
             game.skip();
+            System.out.println("skip");
             return;
         }
-
-        swapCursors(cursor, aux);
-
-        cursor.changeResident(null);
-        aux.changeResident(this);
 
         game.sendMoveMessage(cursor.getCol(), cursor.getRow(), moves);
     }
@@ -50,6 +44,8 @@ public class Player {
     private void swapCursors(Spot old, Spot dest) {
         cursors.remove(old);
         cursors.add(dest);
+        old.changeResident(null);
+        dest.changeResident(this);
     }
 
     private Spot getCursorAt(int col, int row) {
@@ -79,6 +75,6 @@ public class Player {
     public void setQueue(List<Spot> queue) {
         this.queue = queue;
         cursors = new ArrayList<>(queue.size());
-        Collections.copy(cursors, queue);
+        cursors.addAll(queue);
     }
 }
