@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.marralhinha.client.game;
 
+import org.academiadecodigo.bootcamp.marralhinha.client.game.spot.Spot;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Color;
 
 public class Player {
@@ -18,23 +19,12 @@ public class Player {
         }
 
         int moves = game.getDiceValue();
-        Spot iterator = cursor;
+        Spot aux = cursor.move(this, moves);
 
-        while (moves > 0) {
-            iterator = iterator.getNext();
-            moves--;
-
-            if (iterator.getResident() == this) {
-                return;
-            }
+        if (aux != cursor) {
+            cursor.changeResident(null);
+            aux.changeResident(this);
         }
-
-        cursor.changeResident(null);
-        iterator.changeResident(this);
-    }
-
-    public void reset(Spot cursor) {
-        // return cursor to queue
     }
 
     public Color getColor() {

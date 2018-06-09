@@ -2,16 +2,12 @@ package org.academiadecodigo.bootcamp.marralhinha.client.game;
 
 import org.academiadecodigo.bootcamp.marralhinha.utils.Utils;
 
-import java.util.List;
-
 public class GameState {
 
-    private List<Player> players;
     private boolean myTurn;
-    private int diceValue;
+    private int diceValue = 3;
 
-    public GameState(List<Player> players) {
-        this.players = players;
+    public GameState() {
         myTurn = true;
     }
 
@@ -20,9 +16,6 @@ public class GameState {
     }
 
     public int getDiceValue() {
-        // TODO remove both statements below (test only)
-        roll();
-        System.out.println(diceValue);
         return diceValue;
     }
 

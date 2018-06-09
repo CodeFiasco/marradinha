@@ -1,5 +1,6 @@
-package org.academiadecodigo.bootcamp.marralhinha.client.game;
+package org.academiadecodigo.bootcamp.marralhinha.client.game.spot;
 
+import org.academiadecodigo.bootcamp.marralhinha.client.game.Player;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Button;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.ClickHandler;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Color;
@@ -24,30 +25,23 @@ public class Spot implements ClickHandler {
         resident.move(this);
     }
 
-    public void changeResident(Player resident) {
-        if (resident == null) {
-            button.fill(Color.WHITE);
-            this.resident = null;
-            return;
+    public Spot move(Player mover, int times) {
+        if (times == 0) {
+            return this;
         }
 
-        if (this.resident != null) {
-            this.resident.reset(this);
-        }
-
-        this.resident = resident;
-        button.fill(resident.getColor());
+        return next.move(mover, times - 1);
     }
 
-    public Player getResident() {
-        return resident;
+    public void changeResident(Player resident) {
+        Color color = resident == null ? Color.WHITE : resident.getColor();
+        button.fill(color);
+
+        this.resident = resident;
     }
 
     public void setNext(Spot next) {
         this.next = next;
     }
 
-    public Spot getNext() {
-        return next;
-    }
 }
