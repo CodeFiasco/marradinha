@@ -13,13 +13,13 @@ public class Entry extends Spot {
     }
 
     @Override
-    public Spot move(Player mover, int times) {
+    public Spot getNextSpot(Player mover, int times) {
 
         if (times == 0 || mover != key) {
-            return super.move(mover, times);
+            return super.getNextSpot(mover, times);
         }
 
-        return path.move(mover, times - 1);
+        return path.getNextSpot(mover, times - 1);
     }
 
     public void setPath(Spot path) {

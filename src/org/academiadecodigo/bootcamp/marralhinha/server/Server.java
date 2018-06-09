@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.marralhinha.server;
 
 import org.academiadecodigo.bootcamp.marralhinha.utils.Connection;
+import org.academiadecodigo.bootcamp.marralhinha.utils.Messages;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -43,6 +44,8 @@ public class Server {
                 game.addClient(connection);
 
                 new Thread(connection).start();
+
+                connection.sendMessage(Messages.ID + " " + connectedClients);
                 connectedClients++;
 
             } catch (IOException e) {

@@ -37,4 +37,8 @@ public class Client implements EventHandler {
     public void addEvent(String message) {
         events.add(message);
     }
+
+    public void sendMessage(String message) {
+        connection.sendMessage(message);
+    }
 }

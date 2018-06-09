@@ -11,9 +11,13 @@ public class Spot implements ClickHandler {
     private Button button;
     private Player resident;
     private Spot next;
+    private int col;
+    private int row;
 
     public Spot(GraphicsFactory factory, int col, int row) {
         this.button = factory.getButton(this, col, row);
+        this.col = col;
+        this.row = row;
     }
 
     @Override
@@ -25,7 +29,7 @@ public class Spot implements ClickHandler {
         resident.move(this);
     }
 
-    public Spot move(Player mover, int times) {
+    public Spot getNextSpot(Player mover, int times) {
         if (times == 0) {
             return this;
         }
@@ -34,7 +38,7 @@ public class Spot implements ClickHandler {
             return null;
         }
 
-        return next.move(mover, times - 1);
+        return next.getNextSpot(mover, times - 1);
     }
 
     public void changeResident(Player resident) {
@@ -48,6 +52,10 @@ public class Spot implements ClickHandler {
         this.resident = resident;
     }
 
+    public boolean isAt(int col, int row) {
+        return this.col == col && this.row == row;
+    }
+
     public boolean isOccupied() {
         return resident != null;
     }
@@ -56,4 +64,11 @@ public class Spot implements ClickHandler {
         this.next = next;
     }
 
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
 }

@@ -5,18 +5,28 @@ import org.academiadecodigo.bootcamp.marralhinha.client.graphics.GraphicsFactory
 
 public class Queue extends Spot{
 
-    private static final int LEAVE_VALUE = 6;
+    private static final int[] LEAVE_VALUES = {1, 6};
 
     public Queue(GraphicsFactory factory, int col, int row) {
         super(factory, col, row);
     }
 
     @Override
-    public Spot move(Player mover, int times) {
-        if (times != LEAVE_VALUE) {
+    public Spot getNextSpot(Player mover, int times) {
+        if (isLeaveValue(times)) {
             return this;
         }
 
-        return super.move(mover, 1);
+        return super.getNextSpot(mover, 1);
+    }
+
+    private boolean isLeaveValue(int value) {
+        for (int v : LEAVE_VALUES) {
+            if (value == v) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
