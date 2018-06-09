@@ -66,4 +66,9 @@ public class GameState {
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
+
+    public void skip() {
+        client.sendMessage(Messages.SKIP);
+        myTurn = false;
+    }
 }

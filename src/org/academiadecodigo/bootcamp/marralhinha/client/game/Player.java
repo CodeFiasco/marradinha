@@ -29,7 +29,7 @@ public class Player {
         Spot aux = cursor.getNextSpot(this, moves);
 
         if (aux == null) {
-            // invalid getNextSpot
+            game.skip();
             return;
         }
 

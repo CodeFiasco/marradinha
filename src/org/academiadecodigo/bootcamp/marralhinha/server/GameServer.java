@@ -32,8 +32,8 @@ public class GameServer implements EventHandler {
 
     public void start() {
         try {
-            Connection first = initialDiceRoll(clients);
-            play(first);
+            //Connection first = initialDiceRoll(clients);
+            play(clients.get(0));
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -77,17 +77,22 @@ public class GameServer implements EventHandler {
 
     private void play(Connection player) throws InterruptedException {
         int currentPlayer = clients.indexOf(player);
+        currentPlayer -= 1;
 
         while (!gameOver) {
+            currentPlayer = currentPlayer == clients.size() - 1 ? 0 : currentPlayer + 1;
 
             clients.get(currentPlayer).sendMessage(Messages.PLAY);
             String currentPlay = events.take();
+
+            if (currentPlay.equals(Messages.SKIP)) {
+                continue;
+            }
 
             broadcast(currentPlay);
 
             checkIfPlayerWon(currentPlay);
 
-            currentPlayer = currentPlayer == clients.size() - 1 ? 0 : currentPlayer + 1;
         }
 
     }

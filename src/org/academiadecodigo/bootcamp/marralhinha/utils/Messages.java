@@ -7,5 +7,6 @@ public class Messages {
     public static final String WIN = "Win";
     public static final String QUESTION = "R: ";
     public static final String MOVE = "M";
+    public static final String SKIP = "S";
 
 }
