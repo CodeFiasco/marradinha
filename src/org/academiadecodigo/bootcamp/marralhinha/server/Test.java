@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.marralhinha.server;
 
-import org.academiadecodigo.bootcamp.marralhinha.utils.Utils;
-
 import java.io.IOException;
 
 public class Test {

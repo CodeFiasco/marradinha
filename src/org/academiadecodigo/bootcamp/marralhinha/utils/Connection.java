@@ -1,7 +1,5 @@
 package org.academiadecodigo.bootcamp.marralhinha.utils;
 
-import org.academiadecodigo.bootcamp.marralhinha.server.GameServer;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

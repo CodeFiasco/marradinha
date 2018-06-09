@@ -9,8 +9,8 @@ import java.net.Socket;
 
 public class Server {
 
-    public final static int PLAYERS = 2;
-    private final static int DEFAULT_PORT = 9000;
+    private final static int PLAYERS = 4;
+    public final static int DEFAULT_PORT = 9000;
 
     private ServerSocket serverSocket;
     private GameServer game;
@@ -31,7 +31,7 @@ public class Server {
     }
 
     private void waitingForClients() {
-        game = new GameServer();
+        game = new GameServer(PLAYERS);
         int connectedClients = 0;
 
         while (connectedClients < PLAYERS) {

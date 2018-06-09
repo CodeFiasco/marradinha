@@ -17,8 +17,8 @@ public class GameServer implements EventHandler {
     private BlockingQueue<String> events;
     private boolean gameOver = false;
 
-    public GameServer() {
-        clients = new ArrayList<>(Server.PLAYERS);
+    public GameServer(int numberOfClients) {
+        clients = new ArrayList<>(numberOfClients);
         events = new LinkedBlockingQueue<>();
     }
 

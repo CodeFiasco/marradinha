@@ -9,6 +9,7 @@ import java.util.List;
 public class GameState {
 
     private boolean myTurn;
+    private boolean canRoll;
     private int diceValue;
     private List<Player> players;
     private Client client;
@@ -52,5 +53,17 @@ public class GameState {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public boolean canRoll() {
+        return canRoll;
+    }
+
+    public void setCanRoll(boolean canRoll) {
+        this.canRoll = canRoll;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 }
