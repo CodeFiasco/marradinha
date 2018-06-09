@@ -17,10 +17,10 @@ public class Test {
         List<Player> players = new LinkedList<>();
         players.add(new Player(state, Color.RED));
         players.add(new Player(state, Color.BLUE));
+        players.add(new Player(state, Color.GREEN));
+        players.add(new Player(state, Color.YELLOW));
 
-        Spot start = BoardFactory.generate(graphicsFactory, players).get(0);
-
-        start.changeResident(players.get(0));
+        BoardFactory.generate(graphicsFactory, players);
     }
 
 }

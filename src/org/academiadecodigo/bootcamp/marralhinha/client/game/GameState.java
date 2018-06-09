@@ -5,7 +5,7 @@ import org.academiadecodigo.bootcamp.marralhinha.utils.Utils;
 public class GameState {
 
     private boolean myTurn;
-    private int diceValue = 3;
+    private int diceValue;
 
     public GameState() {
         myTurn = true;
@@ -16,6 +16,9 @@ public class GameState {
     }
 
     public int getDiceValue() {
+        // TODO remove both statements below (test only)
+        roll();
+        System.out.println(diceValue);
         return diceValue;
     }
 

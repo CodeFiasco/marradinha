@@ -30,14 +30,26 @@ public class Spot implements ClickHandler {
             return this;
         }
 
+        if (next == null || next.resident == mover) {
+            return null;
+        }
+
         return next.move(mover, times - 1);
     }
 
     public void changeResident(Player resident) {
+        if (this.resident != null && resident != null) {
+            this.resident.reset();
+        }
+
         Color color = resident == null ? Color.WHITE : resident.getColor();
         button.fill(color);
 
         this.resident = resident;
+    }
+
+    public boolean isOccupied() {
+        return resident != null;
     }
 
     public void setNext(Spot next) {
