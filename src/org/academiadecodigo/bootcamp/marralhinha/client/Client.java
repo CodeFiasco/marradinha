@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.marralhinha.client;
 import org.academiadecodigo.bootcamp.marralhinha.client.game.BoardFactory;
 import org.academiadecodigo.bootcamp.marralhinha.client.game.GameState;
 import org.academiadecodigo.bootcamp.marralhinha.client.game.Player;
+import org.academiadecodigo.bootcamp.marralhinha.client.game.RollButton;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Color;
 import org.academiadecodigo.bootcamp.marralhinha.client.graphics.GraphicsFactory;
 import org.academiadecodigo.bootcamp.marralhinha.utils.Connection;
@@ -39,6 +40,8 @@ public class Client implements EventHandler {
         BoardFactory.generate(factory, players);
         game.setPlayers(players);
         game.setClient(this);
+        new RollButton(game, factory);
+
     }
 
     public void start() throws InterruptedException {
