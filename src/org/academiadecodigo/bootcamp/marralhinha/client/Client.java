@@ -31,6 +31,9 @@ public class Client implements EventHandler {
 
     public void init(GraphicsFactory factory) {
         List<Player> players = new LinkedList<>();
+
+        game = new GameState(this, players, factory.getText("", 2, 1));
+        
         players.add(new Player(game, Color.RED));
         players.add(new Player(game, Color.BLUE));
         players.add(new Player(game, Color.GREEN));
@@ -38,9 +41,7 @@ public class Client implements EventHandler {
 
         BoardFactory.generate(factory, players);
 
-        game = new GameState(this, players, factory.getText("", 2, 1));
         new RollButton(game, factory);
-
     }
 
     public void start() throws InterruptedException {
