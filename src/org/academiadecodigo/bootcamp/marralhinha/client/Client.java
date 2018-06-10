@@ -30,8 +30,6 @@ public class Client implements EventHandler {
     }
 
     public void init(GraphicsFactory factory) {
-        game = new GameState(factory.getText("", 2, 1));
-
         List<Player> players = new LinkedList<>();
         players.add(new Player(game, Color.RED));
         players.add(new Player(game, Color.BLUE));
@@ -39,8 +37,8 @@ public class Client implements EventHandler {
         players.add(new Player(game, Color.YELLOW));
 
         BoardFactory.generate(factory, players);
-        game.setPlayers(players);
-        game.setClient(this);
+
+        game = new GameState(this, players, factory.getText("", 2, 1));
         new RollButton(game, factory);
 
     }

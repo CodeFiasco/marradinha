@@ -17,8 +17,11 @@ public class GameState {
     private int diceValue;
     private int id;
 
-    public GameState(Text text) {
+    public GameState(Client client, List<Player> players, Text text) {
+        this.client = client;
+        this.players = players;
         this.text = text;
+        id = -1;
     }
 
     public void roll() {
@@ -43,9 +46,7 @@ public class GameState {
 
     public void setMyTurn(boolean myTurn) {
         this.myTurn = myTurn;
-
-        String text = myTurn ? "Rolled: " + diceValue : "Waiting";
-        this.text.setText(text);
+        this.text.setText(myTurn ? "Rolled: " + diceValue : "Waiting");
     }
 
     public boolean isMyTurn() {
@@ -54,10 +55,6 @@ public class GameState {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
     }
 
     public boolean canRoll() {
@@ -70,10 +67,6 @@ public class GameState {
         if (canRoll) {
             text.setText("Roll dice");
         }
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
     }
 
     public void skip() {
