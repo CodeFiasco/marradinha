@@ -17,7 +17,6 @@ public class Launcher {
     private static final String DEFAULT_HOST = "127.0.0.1";
 
     public static void main(String[] args) {
-        GameState game = new GameState();
         String host = DEFAULT_HOST;
         int port = Server.DEFAULT_PORT;
 
@@ -27,7 +26,7 @@ public class Launcher {
         }
 
         try {
-            Client client = new Client(host, port, game);
+            Client client = new Client(host, port);
             client.init(new SwingFactory(21, 21));
             client.start();
 

@@ -24,13 +24,14 @@ public class Client implements EventHandler {
     private BlockingQueue<String> events;
     private GameState game;
 
-    public Client(String host, int port, GameState gameState) throws IOException {
+    public Client(String host, int port) throws IOException {
         connection = new Connection(new Socket(host, port), this);
         events = new LinkedBlockingQueue<>();
-        this.game = gameState;
     }
 
     public void init(GraphicsFactory factory) {
+        game = new GameState(factory.getText("", 2, 1));
+
         List<Player> players = new LinkedList<>();
         players.add(new Player(game, Color.RED));
         players.add(new Player(game, Color.BLUE));

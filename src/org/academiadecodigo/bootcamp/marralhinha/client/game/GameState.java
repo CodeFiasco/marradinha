@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.marralhinha.client.game;
 
 import org.academiadecodigo.bootcamp.marralhinha.client.Client;
+import org.academiadecodigo.bootcamp.marralhinha.client.graphics.Text;
 import org.academiadecodigo.bootcamp.marralhinha.utils.Messages;
 import org.academiadecodigo.bootcamp.marralhinha.utils.Utils;
 
@@ -8,15 +9,16 @@ import java.util.List;
 
 public class GameState {
 
+    private Text text;
+    private Client client;
+    private List<Player> players;
     private boolean myTurn;
     private boolean canRoll;
     private int diceValue;
-    private List<Player> players;
-    private Client client;
     private int id;
 
-    public GameState() {
-        myTurn = true;
+    public GameState(Text text) {
+        this.text = text;
     }
 
     public void roll() {
@@ -41,6 +43,9 @@ public class GameState {
 
     public void setMyTurn(boolean myTurn) {
         this.myTurn = myTurn;
+
+        String text = myTurn ? "Rolled: " + diceValue : "Waiting";
+        this.text.setText(text);
     }
 
     public boolean isMyTurn() {
@@ -61,6 +66,10 @@ public class GameState {
 
     public void setCanRoll(boolean canRoll) {
         this.canRoll = canRoll;
+
+        if (canRoll) {
+            text.setText("Roll dice");
+        }
     }
 
     public void setPlayers(List<Player> players) {
@@ -70,5 +79,6 @@ public class GameState {
     public void skip() {
         client.sendMessage(Messages.SKIP);
         myTurn = false;
+        text.setText("Waiting");
     }
 }
