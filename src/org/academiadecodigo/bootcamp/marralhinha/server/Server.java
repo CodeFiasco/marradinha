@@ -10,14 +10,9 @@ import java.net.Socket;
 public class Server {
 
     private final static int PLAYERS = 4;
-    public final static int DEFAULT_PORT = 9000;
 
     private ServerSocket serverSocket;
     private GameServer game;
-
-    public Server() throws IOException {
-        this(DEFAULT_PORT);
-    }
 
     public Server(int port) throws IOException{
         serverSocket = new ServerSocket(port);
