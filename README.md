@@ -6,3 +6,4 @@ To Do List:
 - [ ] Create a markup to know which side of the board is which player
 - [ ] Create menus for the game
 - [ ] Create middle button
+- [ ] Check winner logic
