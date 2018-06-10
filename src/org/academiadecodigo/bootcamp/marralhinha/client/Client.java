@@ -48,13 +48,8 @@ public class Client implements EventHandler {
     public void start() throws InterruptedException {
         new Thread(connection).start();
 
-
         while (true) {
-
-            String event = events.take();
-
-            parseString(event);
-
+            parseString(events.take());
         }
     }
 
@@ -64,7 +59,6 @@ public class Client implements EventHandler {
         switch (arguments[0]) {
 
             case Messages.PLAY:
-                System.out.println("Your turn");
                 game.setCanRoll(true);
                 break;
 

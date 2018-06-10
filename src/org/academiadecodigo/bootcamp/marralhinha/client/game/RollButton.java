@@ -14,7 +14,6 @@ public class RollButton implements ClickHandler {
 
     @Override
     public void clicked() {
-
         if (!game.canRoll()) {
             return;
         }
@@ -22,6 +21,5 @@ public class RollButton implements ClickHandler {
         game.roll();
         game.setCanRoll(false);
         game.setMyTurn(true);
-        System.out.println(game.getDiceValue());
     }
 }

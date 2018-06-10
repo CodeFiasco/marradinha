@@ -28,7 +28,6 @@ public class Player {
 
         if (aux == null) {
             game.skip();
-            System.out.println("skip");
             return;
         }
 
