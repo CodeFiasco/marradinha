@@ -93,7 +93,7 @@ public class GameServer implements EventHandler {
 
             String[] arguments = currentPlay.split(" ");
 
-            if (arguments[4].equals("6")){
+            if (arguments.length == 5 && arguments[4].equals("6")){
                 currentPlayer--;
             }
 
