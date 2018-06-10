@@ -42,8 +42,8 @@ public class Spot implements ClickHandler {
     }
 
     public void changeResident(Player resident) {
-        if (this.resident != null && resident != null) {
-            this.resident.reset();
+        if (this.resident != null && resident != null && this.resident != resident) {
+            this.resident.reset(this);
         }
 
         Color color = resident == null ? Color.WHITE : resident.getColor();

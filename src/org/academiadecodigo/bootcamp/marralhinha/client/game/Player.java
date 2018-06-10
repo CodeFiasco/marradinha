@@ -59,11 +59,12 @@ public class Player {
         return null;
     }
 
-    public void reset() {
+    public void reset(Spot spot) {
         for (Spot place : queue) {
 
             if (!place.isOccupied()) {
                 place.changeResident(this);
+                swapCursors(spot, place);
                 break;
             }
         }
