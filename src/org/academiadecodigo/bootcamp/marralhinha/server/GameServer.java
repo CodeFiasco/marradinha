@@ -85,10 +85,17 @@ public class GameServer implements EventHandler {
         currentPlayer -= 1;
 
         while (!gameOver) {
+
             currentPlayer = currentPlayer == clients.size() - 1 ? 0 : currentPlayer + 1;
 
             clients.get(currentPlayer).sendMessage(Messages.PLAY);
             String currentPlay = events.take();
+
+            String[] arguments = currentPlay.split(" ");
+
+            if (arguments[4].equals("6")){
+                currentPlayer--;
+            }
 
             if (currentPlay.equals(Messages.SKIP)) {
                 continue;
