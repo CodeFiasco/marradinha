@@ -32,8 +32,9 @@ public class GameServer implements EventHandler {
 
     public void start() {
         try {
-            //Connection first = initialDiceRoll(clients);
-            play(clients.get(0));
+            Connection first = initialDiceRoll(clients);
+            System.out.println("start");
+            play(first);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -41,11 +42,10 @@ public class GameServer implements EventHandler {
     }
 
     private Connection initialDiceRoll(List<Connection> clients) throws InterruptedException {
-        List<Connection> aux = new LinkedList<>();
         int[] rolls = new int[clients.size()];
 
         askForRolls(clients, rolls);
-        selectBiggest(aux, rolls);
+        List<Connection> aux = selectBiggest(clients, rolls);
 
         if (aux.size() > 1) {
             return initialDiceRoll(aux);
@@ -58,21 +58,26 @@ public class GameServer implements EventHandler {
         for (int i = 0; i < clients.size(); i++) {
             clients.get(i).sendMessage(Messages.QUESTION);
             rolls[i] = Utils.StringToInt(events.take());
+            System.out.println(i + " rolled " + rolls[i]);
         }
     }
 
-    private void selectBiggest(List<Connection> clients, int[] rolls) {
+    private List<Connection> selectBiggest(List<Connection> clients, int[] rolls) {
+        List<Connection> result = new LinkedList<>();
+
         for (int i = 0, biggest = 0; i < rolls.length; i++) {
             if (rolls[i] > biggest) {
 
                 biggest = rolls[i];
-                clients.clear();
+                result.clear();
             }
 
             if (rolls[i] == biggest) {
-                clients.add(clients.get(i));
+                result.add(clients.get(i));
             }
         }
+
+        return result;
     }
 
     private void play(Connection player) throws InterruptedException {

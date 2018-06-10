@@ -33,7 +33,7 @@ public class Client implements EventHandler {
         List<Player> players = new LinkedList<>();
 
         game = new GameState(this, players, factory.getText("", 2, 1));
-        
+
         players.add(new Player(game, Color.RED));
         players.add(new Player(game, Color.BLUE));
         players.add(new Player(game, Color.GREEN));
@@ -72,7 +72,11 @@ public class Client implements EventHandler {
             case Messages.QUESTION:
                 int rand = Utils.getRandomInt();
                 sendMessage(Integer.toString(rand));
+                break;
 
+            default:
+                System.out.println("invalid message");
+                break;
         }
 
     }
