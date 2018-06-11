@@ -27,7 +27,6 @@ public class Player {
         Spot aux = cursor.getNextSpot(this, moves);
 
         if (aux == null) {
-            game.skip();
             return;
         }
 
@@ -67,6 +66,16 @@ public class Player {
                 break;
             }
         }
+    }
+
+    public boolean hasValidMoves() {
+        for (Spot spot : cursors) {
+            if (spot.getNextSpot(this, game.getDiceValue()) != null) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public Color getColor() {

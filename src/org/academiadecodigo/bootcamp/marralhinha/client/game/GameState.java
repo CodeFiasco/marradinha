@@ -26,6 +26,15 @@ public class GameState {
 
     public void roll() {
         diceValue = Utils.getRandomInt();
+
+        myTurn = players.get(id).hasValidMoves();
+        canRoll = false;
+
+        text.setText("Rolled: " + diceValue);
+
+        if (!myTurn) {
+            skip();
+        }
     }
 
     public int getDiceValue() {

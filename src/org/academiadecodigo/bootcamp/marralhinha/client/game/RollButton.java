@@ -19,7 +19,5 @@ public class RollButton implements ClickHandler {
         }
 
         game.roll();
-        game.setCanRoll(false);
-        game.setMyTurn(true);
     }
 }
