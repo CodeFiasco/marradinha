@@ -7,3 +7,5 @@ To Do List:
 - [ ] Create menus for the game
 - [ ] Create middle button
 - [ ] Check winner logic
+- [ ] sound alerts for every player each round
+- [ ] improve text messages
