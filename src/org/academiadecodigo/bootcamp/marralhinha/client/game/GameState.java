@@ -14,7 +14,7 @@ public class GameState {
     private List<Player> players;
     private boolean myTurn;
     private boolean canRoll;
-    private int diceValue;
+    private int diceValue = 6;
     private int id;
 
     public GameState(Client client, List<Player> players, Text text) {
@@ -43,6 +43,10 @@ public class GameState {
 
     public void movePlayer(int id, int col, int row, int times) {
         players.get(id).move(col, row, times);
+
+        if (this.id == id && players.get(this.id).hasWon()) {
+            client.sendMessage(Messages.WIN + " " + id);
+        }
     }
 
     public void sendMoveMessage(int col, int row, int times) {
@@ -82,5 +86,9 @@ public class GameState {
         client.sendMessage(Messages.SKIP);
         myTurn = false;
         text.setText("Waiting");
+    }
+
+    public void win(int winnerId) {
+        text.setText(players.get(winnerId).getColor() + " has wins!");
     }
 }

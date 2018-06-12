@@ -11,6 +11,7 @@ public class Player {
     private Color color;
     private GameState game;
     private List<Spot> queue;
+    private List<Spot> finalPath;
     private List<Spot> cursors;
 
     public Player(GameState game, Color color) {
@@ -78,6 +79,10 @@ public class Player {
         return false;
     }
 
+    public boolean hasWon() {
+        return finalPath.containsAll(cursors);
+    }
+
     public Color getColor() {
         return color;
     }
@@ -86,5 +91,9 @@ public class Player {
         this.queue = queue;
         cursors = new ArrayList<>(queue.size());
         cursors.addAll(queue);
+    }
+
+    public void setFinalPath(List<Spot> finalPath) {
+        this.finalPath = finalPath;
     }
 }

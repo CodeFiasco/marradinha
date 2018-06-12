@@ -91,6 +91,8 @@ public class GameServer implements EventHandler {
             clients.get(currentPlayer).sendMessage(Messages.PLAY);
             String currentPlay = events.take();
 
+            System.out.println(currentPlay);
+
             String[] arguments = currentPlay.split(" ");
 
             if (arguments.length == 5 && arguments[4].equals("6")){

@@ -74,6 +74,9 @@ public class Client implements EventHandler {
                 sendMessage(Integer.toString(rand));
                 break;
 
+            case Messages.WIN:
+                game.win(Utils.StringToInt(arguments[1]));
+
             default:
                 System.out.println("invalid message");
                 break;

@@ -99,6 +99,16 @@ public class BoardFactory {
 
         entry.setKey(key);
         entry.setPath(start);
+
+        List<Spot> path = new ArrayList<>(5);
+
+        while (start != null) {
+            path.add(start);
+            start = start.getNextSpot(key, 1);
+        }
+
+        key.setFinalPath(path);
+
         return entry;
     }
 }
